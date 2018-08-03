@@ -1,0 +1,21 @@
+body {
+  padding: 0px;
+  margin: 0px;
+
+  /*font: 1em "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.3em;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container h2{
+	text-transform: uppercase;
+}
+
+.container{
+	background-color: #eee;
+	border:2px solid red;
+}
