@@ -43,7 +43,7 @@ a {
 	display:flex;
 	align-items: center;
 	justify-content: center;
-
+	flex-flow: wrap;
 }
 
 .flex-vertical{
@@ -52,6 +52,7 @@ a {
 
 .flex-horizontal{
 	flex-direction: row;
+	
 }
 
 .container#splash{
@@ -65,6 +66,54 @@ a {
 	color: #bcbcbc;
 }
 
+
 .container#projects-pers{
 	background-color: #d6edf0;
+}
+
+
+/* ------------------------- */
+/* ------------------------- */
+/*  small container rules */
+
+.project-item{
+	flex-grow: 1;
+	flex-basis: 33%; /*works only if you have flex-grow*/
+	align-self: flex-start;
+
+}
+
+.project-item .thumb{
+	height: 250px;
+	background-color: tomato;
+}
+
+.project-item .description{
+	background-color: white;
+}
+
+.project-item span{
+	font-size: 1em;
+}
+
+.project-item span.name{
+	font-weight: bold;
+	display:block;
+	text-align: center;
+}
+
+.project-item .tags{
+	background-color: white;
+}
+
+.project-item ol{
+	padding: 0; margin: 0;
+	list-style: none;
+
+}
+.project-item li{
+	display:inline;
+	border-radius: 10px;
+	border: 1px solid black;
+	
 }
