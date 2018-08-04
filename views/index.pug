@@ -3,25 +3,199 @@ extends layout
 block content
 	div.page-wrapper
 		div.menubar
-			span Welcome to #{title}
+			span Welcome to 
+				span.emphasis #{title}
 		
-		div.container#splash
-			p.
-				Hello, I am Mindy! 
-				It's raining here in Pittsburgh.
-				What about you?
+		div.container.isflex.flex-vertical#splash
+			p Hello, I am Mindy. I am a (Mostly) Web Developer.
+			p It's rainy in Pittsburgh.
+			p I heard it is raining in Seattle / Looks like it is sunny in Colorado!
 		
 		div.container#aboutme
 			h2 About me
-			p.
-				I am a mechanical engineer by diciplin, app developer at work, artist for fun, and a bird-lover at heart.
+			div.isflex.flex-horizontal
+				p
+					| I am a mechanical engineer by discipline, programmer at work, artist on the side.
+					br
+					| I worked 6+ years as a web developer, during which I transitioned into functioning full-stack. I am motivated by success of product, success of my team, and success and growth of the business.  
+					br
+					| It is important for me to stay humble, and constantly read and learn.  
+					br
+					| I am currently seeking new opportunities in the east coast, and hope to grow as a software developer. 
+
+				p Key skills
+					ol
+						li Javascript/Express/React
+						li Python/Django
+						li Ruby on Rails
+						li Agile/git/RESTful frameworks
 
 		div.container#projects-prof
-			h2 Projects 
-			p.
-				Projects and shit
+			h2 Professional Projects 
+			div.isflex
+				div.project-item
+					div.thumb
+						image 
+					div.description
+						span.name RoboAcademy Products
+						span Developed multiple standalone course delivery site. Built from scratch using Javascript. Quiz interactives. Also made small promotional website for various products under the same brand.
+					div.tags
+						ol
+							li Javascript
+							li HTML+XML+CSS
+							li bootstrap 
+
+				div.project-item
+					div.thumb
+						image
+					div.description
+						span.name CS2N Backend development
+						span Badge system implementation. Including system that reward different tiers of badge and ways to display and share. Logic parser for interpreting trigger rule.
+					div.tags
+						ol
+							li Ruby on Rails
+							li Javascript 
+							li DB logic
+							li mySQL
+							li Datamap thing
+							li APIs AWS
+
+				div.project-item
+					div.thumb
+						image
+					div.description
+						span.name Sandbloqs
+						span Extended off of Google's Blockly to make our own tool for education.
+					div.tags
+						ol
+							li Javascript
+							li NW.js
+							li Phaser
+
+				div.project-item
+					div.thumb
+					div.description
+						span.name RVW debug tool
+						span We were preparing to launch RVW to be more web friendly. Built debug tool that interprets message from Unity and execute commands in sequence.
+					div.tags
+						ol
+							li Javascript
+
+
+				div.project-item
+					div.thumb
+					div.description
+						span.name MADCAP Support Developement
+						span Madcap is a documentation program that we extended its usage to behave like Moodle. Javascript was used to fill the gap between desired UI/UX functionality to what Madcap can offer.
+					div.tags
+						ol
+							li Javascript
+
+				div.project-item
+					div.thumb
+						image
+					div.description
+						span.name VEX Education Portal
+						span Developed course content delivery platform for students and teachers. Worked on creating the website as well as tools supporting deployment for those who have no time to learn the process. 
+					div.tags
+						ol
+							li Javascript
+							li PHP
+							li Handlebar.js
+							li Python
+							li Node.js
+							li Shell script
+
+
+				
+
+
 		div.container#projects-pers
+			h2 Personal Projects
+			div.isflex
+				div.project-item
+					div.thumb
+						Cumulus
+					div.description
+						span.name Project Cumulus
+						span A tool that makes an experimental format for story telling that is somewhere between a flipbook and a stopmotion animation. Works like Trello, Plays like flipbooks, looks like a movie. 
+					div.tags
+						ol
+							li Python/Django 
+							li Javascript/React
+							li RESTful framework
+
+				div.project-item
+					div.thumb
+					div.description
+						span.name Muter
+						span Harassers online are often provoked even more by action of "blocking". The best way to combat harassers and trolls online is a complete disengagement. But that can only get you so far. This chrome extention mutes anonymous harassers stealthly. 
+					div.tags
+						ol
+							li Javascript
+							li JQuery
+
+				div.project-item
+					PyChat
+					div.description
+						span.name PyChat
+						span May look like rudimentary chat client, but can send hand drawn messages. The hand-drawn drawings can be dranw in frames to make a short animation. 
+					div.tags
+						ol 
+							li Python
+							li Tornado
+							li Pillow
+
+				div.project-item
+					div.thumb
+					div.description
+						span.name Money Buffer
+						span Gameifies your spending by "buffering" your money daily. Whatever you do not spend on your daily buffer is returned to the buffer. Be more aware of your spending habits and save money.
+					div.tags
+						ol
+							li Excel/VBA
+
+				div.project-item
+					div.thumb
+					div.description
+						span.name MindyJang.com
+						span Initially an experiment with node.js, but recycled into a weather-aware portfolio website.
+					div.tags
+						ol
+							li Javascript
+							li React
+							li Express
+							li MongoDB
+							
+
+
+				div.project-item
+					div.thumb
+					div.description
+						span.name
+						span
+					div.tags
+
 		div.container#activities
+			h2 Other Activities
+			I make crazy cards
+				Die cutter, perf boards, soldering iron
+
+			Udacity: Currently teaching myself Machine Learning and Deep Neural Networks. 
+
+			Game Jam 2017. Our team won an award! Unity 
+
+			I write horror sci-fi stories.
+
+			Learn about birds. 
+
+
+
 		div.container#etc
+			p Keep in touch
+
+			p Or, leave a mark!
+
 		div.footer
+			Blahblahalbha copy right
 

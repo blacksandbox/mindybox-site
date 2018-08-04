@@ -11,11 +11,60 @@ a {
   color: #00B7FF;
 }
 
+.menubar{
+	display:flex;
+	align-items: center;
+	position: fixed;
+	top: 0; left: 0;
+
+	height: 60px; width: 100%;
+	background-color:#0E95DD;
+	color: #E9FBFD;
+
+
+}
+
+.menubar span.emphasis{
+	color: #FFA23B;
+}
+
 .container h2{
 	text-transform: uppercase;
 }
 
 .container{
 	background-color: #eee;
-	border:2px solid red;
+	text-align: center;
+	padding: 30px;
+}
+
+
+.isflex{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.flex-vertical{
+	flex-direction: column;
+}
+
+.flex-horizontal{
+	flex-direction: row;
+}
+
+.container#splash{
+	background-color: #0E95DD;
+	color: #E9FBFD;
+	height: 520px;
+}
+
+.container#aboutme{
+	background-color: #222;
+	color: #bcbcbc;
+}
+
+.container#projects-pers{
+	background-color: #d6edf0;
 }
