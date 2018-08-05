@@ -33,7 +33,7 @@ a {
 }
 
 .container{
-	background-color: #eee;
+	background-color: #f1f1f1;
 	text-align: center;
 	padding: 30px;
 }
@@ -78,42 +78,81 @@ a {
 
 .project-item{
 	flex-grow: 1;
-	flex-basis: 33%; /*works only if you have flex-grow*/
+	flex-basis: 32%; /*works only if you have flex-grow*/
+	min-width: 310px;
 	align-self: flex-start;
+    overflow: hidden; /*this appears to force flex container's width*/
+	box-sizing: border-box;
+	padding: 10px;
 
+	border-radius: 10px;
+
+	text-align: left;
+	font-size: 0.7em;
+	color: #3d3d3d;
+
+}
+
+.project-item div{
+	background-color: white;
 }
 
 .project-item .thumb{
 	height: 250px;
-	background-color: tomato;
+	background-color: tomato;	
+
+	/* background image set on template */
+	background-size: 100% auto;
+	background-position: 50% 50%;
+	/*background-repeat: no-repeat;*/
+
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+
+.project-item .title{
+	box-sizing: border-box;
+	padding: 15px;
+}
+.project-item .title .role{
+	text-transform: uppercase;
+	font-size: 0.7em;
+}
+.project-item .title .name{
+	font-weight: bold;
+	display:block;
+	
+	font-size: 1.4em;
 }
 
 .project-item .description{
-	background-color: white;
+	box-sizing: border-box;
+	padding: 5px 15px;
 }
-
-.project-item span{
-	font-size: 1em;
-}
-
-.project-item span.name{
-	font-weight: bold;
-	display:block;
-	text-align: center;
-}
-
 .project-item .tags{
-	background-color: white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	box-sizing: border-box;
+	padding: 15px;
 }
 
 .project-item ol{
+	display: flex;
+	flex-wrap: wrap;
+
 	padding: 0; margin: 0;
 	list-style: none;
 
 }
 .project-item li{
-	display:inline;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: 1px solid black;
+
+	margin: 5px;
+	padding: 3px;
+
+
 	
 }
