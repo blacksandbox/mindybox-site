@@ -39,4 +39,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+// database
+//Set up mongoose connection
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://boxmaster:9886awedxz@ds113732.mlab.com:13732/mindybox';
+mongoose.connect(mongoDB, {useNewUrlParser: true});
+mongoose.Promise = global.Promise;
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
 module.exports = app;
+
+
