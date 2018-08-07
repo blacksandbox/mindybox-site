@@ -7,8 +7,9 @@ var projectSchema = new Schema({
     role               	 	 : [String],
     short_description   	 : {type: String, required: true},
     challenge_description    : {type: String}
-});
+    template				 : {type: String}
 
+});
 
 // project model's url
 projectSchema
