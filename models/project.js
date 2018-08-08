@@ -6,7 +6,7 @@ var projectSchema = new Schema({
     title               	 : {type: String, required: true},
     role               	 	 : [String],
     short_description   	 : {type: String, required: true},
-    challenge_description    : {type: String}
+    challenge_description    : {type: String},
     template				 : {type: String}
 
 });

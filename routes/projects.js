@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Project = require("./models/project");
+var Project = require('../models/project');
 
 // Example of middleware for all requests
 /*
@@ -10,7 +10,6 @@ router.use(function(req, res, next) {
     next();
 });
 */
-
 
 
 // render template ajaxly
