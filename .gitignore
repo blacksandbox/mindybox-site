@@ -36,5 +36,6 @@
 ehthumbs.db
 Thumbs.db
 
-# Custom folders to ignore
+# Custom folders and files to ignore
 node_modules/
+package-lock.json
