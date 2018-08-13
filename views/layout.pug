@@ -9,6 +9,11 @@ html
     script(src='https://unpkg.com/react@16/umd/react.production.min.js' crossorigin)
     script(src='https://unpkg.com/react-dom@16/umd/react-dom.production.min.js' crossorigin)
 
-    script(src='/scripts/react_projects.js')
+    // JSX support. Dev only. Consider precompiling
+    script(src="https://unpkg.com/babel-standalone@6/babel.min.js")
+
+    // My react script
+    script(src='/scripts/react_projects.js' type="text/babel")
+
   body
     block content

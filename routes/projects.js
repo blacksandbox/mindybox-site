@@ -22,6 +22,8 @@ router.route('/test')
 
 	})
 	.get(function(req,res){
+		// TODO: connect to DB and pull information out
+		
 		res.json({message: "You made a test get request for Projects!"});
 
 		//you have have to use render() to render your own template
