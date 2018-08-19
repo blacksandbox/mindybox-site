@@ -13,12 +13,14 @@ class ViewProjectButton extends React.Component {
 
   openProject(e){
     e.preventDefault();
+
     console.log("project id: " + this.props.projectId);
 
     // TODO: open modal
 
     // Make API call 
     // https://stackoverflow.com/questions/17216438/chain-multiple-then-in-jquery-when
+    
     /*.ajax({...}).then(function(){
         return $.ajax({...});
     }).then(function(){
@@ -28,17 +30,69 @@ class ViewProjectButton extends React.Component {
     }).then(function(){
         return $.ajax({...});
     });*/
-   
 
-    // 
+    var viewProject = function(){
 
+      return $.ajax({
+        url: "/api/projects/5b68e89afb6fc06162438a2e",
+        data: '',
+        method: "GET",
+        beforeSend: function( xhr ) {
+          //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+        }
+      });
+
+    }// end: viewProject()
+
+    var showProject = function(data){
+      if (!data){
+        console.error("No data recieved to display project");
+        return;
+      }
+
+      console.log("Project object retrieved");
+      console.log(data);
+
+
+
+    }
+
+
+    var makeReqTest = function(){
+      return $.ajax({
+        url: "/projects/test/",
+        data: '',
+        method: "GET",
+        beforeSend: function( xhr ) {
+          //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+        }
+      })
+      .done(function( data ) {
+        if ( console && console.log ) {
+          console.log( "Data recieved: ");
+          if (data.hasOwnProperty("message")){
+            console.log(data.message);
+          }
+        }
+      });
+    } // end: makeReq()
+
+    var sayDone = function(){
+      console.log("Everything done");
+    }
+
+    viewProject()
+    .then((data) => showProject(data))
+    .done(makeReqTest);
+ 
   }
+
+
 
   render() {
 
     // example using React.createElement()
     // Use this method if you have trouble using JSX
-
     /*return e(
       'button',
       { onClick: () => this.setState({ liked: true }) },
@@ -53,11 +107,13 @@ class ViewProjectButton extends React.Component {
         view project
       </a>
     );
-  }
+  } // end: render()
+
+
 }
 
 // Place it
-const domTarget = document.querySelector('.button-container');
+const domTarget = document.querySelector('.view-button-container');
 console.log(domTarget);
 
 ReactDOM.render(<ViewProjectButton projectId='1'/>, domTarget);

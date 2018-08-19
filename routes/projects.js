@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Project = require('../models/project');
+// var Project = require('../models/project');
 
 // Example of middleware for all requests
 /*
@@ -17,7 +17,7 @@ router.use(function(req, res, next) {
 router.route('/test')
 	.all(function(req,res,next){
 		//this is where your middleware lives
-		console.log("Middleware: Ajax request made");
+		console.log("Middleware: Ajax request recieved");
 		next(); // don't stop at middleware, go to the next routes
 
 	})
