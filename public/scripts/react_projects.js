@@ -36,6 +36,7 @@ class ViewProjectButton extends React.Component {
       return $.ajax({
         url: "/api/projects/5b68e89afb6fc06162438a2e",
         data: '',
+        dataType: 'json',
         method: "GET",
         beforeSend: function( xhr ) {
           //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
@@ -69,7 +70,6 @@ class ViewProjectButton extends React.Component {
       })
       .done(function( data ) {
         if ( console && console.log ) {
-          console.log( "Data recieved: ");
           if (data.hasOwnProperty("message")){
             console.log(data.message);
           }

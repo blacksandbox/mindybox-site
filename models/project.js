@@ -15,7 +15,7 @@ var projectSchema = new Schema({
 projectSchema
 .virtual('url')
 .get(function () {
-  return '/project/' + this._id;
+  return 'views/project_snippets/' + this.template;
 });
 
 //create "project" model class

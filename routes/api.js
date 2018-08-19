@@ -1,4 +1,5 @@
 var express = require('express');
+var pug = require('pug');
 var router = express.Router();
 var Project = require('../models/project');
 
@@ -38,8 +39,32 @@ router.route('/projects/:project_id')
                 res.send(err);
                 // I don't need to return?
             }
+			
+			var resJson = {};
+			
+			// hasOwnProperty always returns false for some reason
+			// console.log(project_obj.hasOwnProperty('_id')); // false
 
-            res.json(project_obj);
+			resJson['_id'] = project_obj._id === undefined ? false : project_obj._id;
+			resJson['template_url'] = project_obj.url === undefined ? false : project_obj.url;  
+
+			resJson['html'] = '';
+			if (resJson.template_url){
+				//TODO: replace this with resJson.template_url
+				try {
+					var renderFn = pug.compileFile(resJson.template_url);
+					resJson['html'] = renderFn({id: resJson._id});
+				}
+				catch (err){
+					if (err.code == 'ENOENT'){
+						resJson['html'] = "Could not find project's template at '" + resJson.template_url + "'";
+					} else {
+						resJson['html'] = "Sorry, something went wrong when retrieving template :(";
+					}
+				}
+			} 
+
+            res.json(resJson);
         });
     });
 
