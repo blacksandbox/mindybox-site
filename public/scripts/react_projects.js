@@ -16,6 +16,14 @@ class ViewProjectButton extends React.Component {
     e.preventDefault();
 
     // TODO: open modal
+    // show lightbox
+    // show modal 
+    // once done make api call
+    
+    
+
+
+
 
     // Make API call 
     // https://stackoverflow.com/questions/17216438/chain-multiple-then-in-jquery-when
