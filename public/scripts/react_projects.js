@@ -9,32 +9,24 @@ class ViewProjectButton extends React.Component {
   constructor(props) {
     super(props); // All react components classes are subclass
     this.state = { clicked: false };
+    this._id = props.projectId; 
   }
 
   openProject(e){
     e.preventDefault();
-
-    console.log("project id: " + this.props.projectId);
 
     // TODO: open modal
 
     // Make API call 
     // https://stackoverflow.com/questions/17216438/chain-multiple-then-in-jquery-when
     
-    /*.ajax({...}).then(function(){
-        return $.ajax({...});
-    }).then(function(){
-        return $.ajax({...});
-    }).then(function(){
-        return $.ajax({...});
-    }).then(function(){
-        return $.ajax({...});
-    });*/
-
-    var viewProject = function(){
-
+    var getProject = function(_id){
+      if (_id === undefined){
+        console.error("attempted to get project with empty id");
+        return;
+      }
       return $.ajax({
-        url: "/api/projects/5b68e89afb6fc06162438a2e",
+        url: "/api/projects/" + _id,
         data: '',
         dataType: 'json',
         method: "GET",
@@ -53,9 +45,6 @@ class ViewProjectButton extends React.Component {
 
       console.log("Project object retrieved");
       console.log(data);
-
-
-
     }
 
 
@@ -81,9 +70,16 @@ class ViewProjectButton extends React.Component {
       console.log("Everything done");
     }
 
-    viewProject()
+    // +++++++++++++++++++++
+    // +++++++++++++++++++++
+    // CHAIN
+
+    getProject(this._id)
     .then((data) => showProject(data))
     .done(makeReqTest);
+
+    // +++++++++++++++++++++
+    // +++++++++++++++++++++
  
   }
 
@@ -103,6 +99,7 @@ class ViewProjectButton extends React.Component {
       <a 
         class="view-button project" 
         href="#"
+        id={this.props.projectId}
         onClick={(e) => this.openProject(e)}>
         view project
       </a>
@@ -112,8 +109,20 @@ class ViewProjectButton extends React.Component {
 
 }
 
-// Place it
-const domTarget = document.querySelector('.view-button-container');
-console.log(domTarget);
 
-ReactDOM.render(<ViewProjectButton projectId='1'/>, domTarget);
+// ----------------------------
+// ----------------------------
+// Place it
+// ----------------------------
+// ----------------------------
+
+const buttonList = document.querySelectorAll('.view-button-container');
+
+for(let i=0; i<buttonList.length; i++){
+  // grab id
+  var projectId = buttonList[i].getAttribute("id");
+
+  // render
+  ReactDOM.render(<ViewProjectButton projectId={projectId}/>, buttonList[i]);   
+}
+
