@@ -15,15 +15,8 @@ class ViewProjectButton extends React.Component {
   openProject(e){
     e.preventDefault();
 
-    // TODO: open modal
-    // show lightbox
-    // show modal 
-    // once done make api call
+    // TODO: open modal 
     
-    
-
-
-
 
     // Make API call 
     // https://stackoverflow.com/questions/17216438/chain-multiple-then-in-jquery-when
@@ -92,7 +85,6 @@ class ViewProjectButton extends React.Component {
   }
 
 
-
   render() {
 
     // example using React.createElement()
@@ -102,7 +94,6 @@ class ViewProjectButton extends React.Component {
       { onClick: () => this.setState({ liked: true }) },
       'Like'
     ); */
-    
     return (
       <a 
         class="view-button project" 

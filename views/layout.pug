@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/stylesheets/modal.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Quicksand')
 
     // javascript libraries
@@ -15,9 +16,13 @@ html
 
 
 
-    // My react script
-    script(src='/scripts/react_projects.js' type="text/babel")
+    
 
   body
-    div.lightbox
+    div.reactModal
+
     block content
+
+  // My react script
+  script(src='/scripts/react_projects.js' type="text/babel")
+  script(src='/scripts/react_modals.js' type="text/babel")
