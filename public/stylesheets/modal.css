@@ -15,25 +15,23 @@
 
 .modal{
 	position: fixed;
-	width: 700px; 
-	max-height: 350px;
-
+	
 	border-radius: 5px;
 	background-color: white;
+	margin: 0 20px;
+
+	cursor: default;
+	font-size: 0.8em
 }
 
 .modal .header{
-	display: flex;
-	justify-content: space-between;
-	height: 50px;
-	border-bottom: 1px solid #d1d1d1;
+	position: relative;
 }
 
-.modal .header span{
-	align-self: center;
-}
 
 .modal .header .close{
+	position: absolute;
+	top: 0; right: 0;
 	color: #f27373;
 	cursor: pointer;
 }
@@ -43,10 +41,27 @@
 }
 
 .modal .content{
-	min-height: 200px;
+	padding: 0 20px 20px 20px;
+	min-width: 500px; max-width: 900px; 
+	min-height: 300px; max-height: 500px;
+	overflow: scroll;
 }
+
+.modal .content h2, 
+.modal .content h3, 
+.modal .content h4{
+	color: blue;
+}
+
 
 .modal .footer{
 	border-top: 1px solid #d1d1d1;
 	height: 30px;
 }
+
+
+
+
+/* ------------------------- */
+/* ------------------------- */
+/*  Inside Modal content */
