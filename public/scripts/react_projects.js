@@ -1,7 +1,101 @@
+
+//import anime from 'animejs';
 'use strict';
 
-
 const e = React.createElement;
+
+
+class Modal extends React.Component {
+
+  // Constructor
+  constructor(props){
+    super(props);
+    this.state = { open: false };
+    this.selectors = {
+      lightbox: ".lightbox",
+      modal: ".lightbox .modal"
+    };
+    this.node_lightbox;
+    this.node_modal;
+
+    this.modalTimeline;
+  }
+
+  componentDidMount(){
+    console.log("mounting...");
+    //set animation
+    this.node_lightbox = document.querySelector(this.selectors['lightbox']);
+    // this.node_lightbox.hidden = true; //this keeps element's hitbox
+    //this.node_lightbox.style.display = "none"; //have to remember previous style
+    //this.node_lightbox.style.visibility  = "hidden";
+    this.node_modal = document.querySelector(this.selectors['modal']);
+
+    //aniamtion
+    this.modalTimeline = anime.timeline({
+      autoplay: false
+    });
+
+    this.modalTimeline
+    .add({ //darken lightbox
+      targets: this.node_lightbox,
+      opacity: [0,1],
+      easing: 'easeOutExpo',
+      duration: 400
+
+    })
+    .add({
+      targets: this.node_lightbox.querySelector('.modal'),
+      translateY: [-50, 0],
+      easing: 'easeInOutSine',
+      elasticity: 1000,
+      offset: '-=300',
+      duration: 300
+    });
+
+
+  }
+    
+
+
+  openModal(){
+    this.node_lightbox.style.pointerEvents = "auto";
+    this.modalTimeline.restart();
+    this.modalTimeline.play();
+    
+
+    this.promise = this.modalTimeline.finished.then(() => {
+      console.log("Animation done!");
+    });
+
+  }
+
+  closeModal(){
+    this.node_lightbox.style.pointerEvents = "none";
+    //this.modalTimeline.restart();
+    this.modalTimeline.play();
+    this.modalTimeline.reverse();
+
+  }
+
+  // The Render function
+  render(){
+    return (
+      <div class="lightbox" onClick={(e) => this.closeModal(e)}>
+        <div class="modal">
+          <div class="header">
+            <span class="projectName">Project name</span>
+            <span class="close" onClick={e => this.closeModal(e)}>Close</span>
+          </div>
+          <div class="content">{this.props.content}</div>
+
+          <div class="footer"></div>
+        </div> 
+      </div>
+      
+    );
+  } // end: render() 
+} 
+
 
 // Define component
 class ViewProjectButton extends React.Component {
@@ -16,7 +110,7 @@ class ViewProjectButton extends React.Component {
     e.preventDefault();
 
     // TODO: open modal 
-    
+    r_modal.openModal();
 
     // Make API call 
     // https://stackoverflow.com/questions/17216438/chain-multiple-then-in-jquery-when
@@ -117,11 +211,15 @@ class ViewProjectButton extends React.Component {
 
 const buttonList = document.querySelectorAll('.view-button-container');
 
+
 for(let i=0; i<buttonList.length; i++){
   // grab id
   var projectId = buttonList[i].getAttribute("id");
-
-  // render
-  ReactDOM.render(<ViewProjectButton projectId={projectId}/>, buttonList[i]);   
+  ReactDOM.render(<ViewProjectButton projectId={projectId} modal_obj={r_modal}/>, buttonList[i]);
 }
+
+// render
+// ReactDOM.render() returns a reference to the component being mounted.
+// Parent.forceUpdate()
+const r_modal = ReactDOM.render(<Modal testprop="2"/>, document.querySelector('body .reactModal'));
 
