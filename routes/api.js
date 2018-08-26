@@ -46,14 +46,13 @@ router.route('/projects/:project_id')
 			// console.log(project_obj.hasOwnProperty('_id')); // false
 
 			resJson['_id'] = project_obj._id === undefined ? false : project_obj._id;
-			resJson['template_url'] = project_obj.url === undefined ? false : project_obj.url;  
+			resJson['template_url'] = project_obj.url === undefined ? false : project_obj.url;
 
 			resJson['html'] = '';
 			if (resJson.template_url){
-				//TODO: replace this with resJson.template_url
 				try {
 					var renderFn = pug.compileFile(resJson.template_url);
-					resJson['html'] = renderFn({id: resJson._id});
+					resJson['html'] = renderFn({id: resJson._id, title: project_obj.title});
 				}
 				catch (err){
 					if (err.code == 'ENOENT'){
