@@ -59,6 +59,7 @@ class Modal extends React.Component {
 
   openModal(){
     this.node_lightbox.style.pointerEvents = "auto";
+    //this.node_modal.style.pointerEvents = "auto";
     this.modalTimeline.restart();
     this.modalTimeline.play();
     
@@ -69,7 +70,9 @@ class Modal extends React.Component {
 
   }
 
-  closeModal(){
+  closeModal(e){
+    e.preventDefault();
+    e.stopPropagation();
     this.node_lightbox.style.pointerEvents = "none";
     //this.modalTimeline.restart();
     this.modalTimeline.play();
@@ -80,15 +83,15 @@ class Modal extends React.Component {
   // The Render function
   render(){
     return (
-      <div class="lightbox" onClick={(e) => this.closeModal(e)}>
-        <div class="modal">
-          <div class="header">
-            <span class="projectName">Project name</span>
-            <span class="close" onClick={e => this.closeModal(e)}>Close</span>
+      <div className="lightbox" onClick={(e) => this.closeModal(e)}>
+        <div className="modal" onClick={e => {e.stopPropagation();}}>
+          <div className="header">
+            <span className="projectName"></span>
+            <span className="close" onClick={e => this.closeModal(e)}>Close</span>
           </div>
-          <div class="content">{this.props.content}</div>
+          <div className="content">{this.props.content}</div>
 
-          <div class="footer"></div>
+          <div className="footer"></div>
         </div> 
       </div>
       
@@ -140,6 +143,8 @@ class ViewProjectButton extends React.Component {
 
       console.log("Project object retrieved");
       console.log(data);
+
+      ReactDOM.render(data.html, document.querySelector('.modal .content'));
     }
 
 
@@ -156,6 +161,8 @@ class ViewProjectButton extends React.Component {
         if ( console && console.log ) {
           if (data.hasOwnProperty("message")){
             console.log(data.message);
+
+
           }
         }
       });
@@ -190,7 +197,7 @@ class ViewProjectButton extends React.Component {
     ); */
     return (
       <a 
-        class="view-button project" 
+        className="view-button project" 
         href="#"
         id={this.props.projectId}
         onClick={(e) => this.openProject(e)}>
