@@ -40,15 +40,15 @@ class Modal extends React.Component {
       targets: this.node_lightbox,
       opacity: [0,1],
       easing: 'easeOutExpo',
-      duration: 400
+      duration: 300
 
     })
-    .add({
+    .add({ //show modal
       targets: this.node_lightbox.querySelector('.modal'),
       translateY: [-50, 0],
-      easing: 'easeInOutSine',
-      elasticity: 1000,
-      offset: '-=300',
+      easing: 'easeOutExpo',
+      //elasticity: 500,
+      offset: 0, //should start at same time
       duration: 300
     });
 
