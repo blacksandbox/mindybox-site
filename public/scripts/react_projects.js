@@ -45,7 +45,7 @@ class Modal extends React.Component {
     })
     .add({ //show modal
       targets: this.node_lightbox.querySelector('.modal'),
-      translateY: [-50, 0],
+      translateY: [-90, 0],
       easing: 'easeOutExpo',
       //elasticity: 500,
       offset: 0, //should start at same time
@@ -144,7 +144,19 @@ class ViewProjectButton extends React.Component {
       console.log("Project object retrieved");
       console.log(data);
 
-      ReactDOM.render(data.html, document.querySelector('.modal .content'));
+      ///////////////////
+      ///// RENDER //////
+      ///////////////////
+      ReactDOM.render(
+        <div dangerouslySetInnerHTML={{__html: data.html}} />,
+        document.querySelector('.modal .content')
+      );
+
+      var renderAnime = anime({
+        targets: document.querySelector('.modal .content div'),
+        translateY: [-50, 0],
+        opacity: [0, 1]
+      });
     }
 
 
