@@ -41,12 +41,15 @@
 }
 
 .modal .content{
-	padding: 0 20px 20px 20px;
+	padding: 30px;
 	min-width: 500px; max-width: 900px; 
 	min-height: 300px; max-height: 500px;
 	overflow: scroll;
 }
 
+.modal .content h2{
+	margin-top: 0;
+}
 .modal .content h2, 
 .modal .content h3, 
 .modal .content h4{

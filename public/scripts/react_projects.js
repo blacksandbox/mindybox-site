@@ -63,9 +63,12 @@ class Modal extends React.Component {
     this.modalTimeline.restart();
     this.modalTimeline.play();
     
+    //hide previous content
+    //this.node_modal.querySelector(".content").style.opacity = 0;
 
     this.promise = this.modalTimeline.finished.then(() => {
       console.log("Animation done!");
+
     });
 
   }
@@ -213,7 +216,7 @@ class ViewProjectButton extends React.Component {
         href="#"
         id={this.props.projectId}
         onClick={(e) => this.openProject(e)}>
-        view project
+        Learn More
       </a>
     );
   } // end: render()
