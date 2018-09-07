@@ -11,6 +11,11 @@ a {
   color: #00B7FF;
 }
 
+/* Experimental: makes container flex
+ if they are still loading content*/
+ .isLoading{
+ 	display: flex;
+ }
 
 
 .menubar{

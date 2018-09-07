@@ -4,13 +4,36 @@
 
 const e = React.createElement;
 
+class Spinny extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { loading: true };
+    this.node_spinny;
+
+    this.style = this.props.style;
+  }
+
+  componentDidMount(){
+    //this.node_spinny = document.querySelector(this.selectors['lightbox']);
+  }
+
+  render(){
+    return (
+      <div className="spinny_playground">
+        <div className={'spinny ' + this.props.style}>
+        </div>
+      </div>
+    )
+  }
+
+}
 
 class Modal extends React.Component {
 
   // Constructor
   constructor(props){
     super(props);
-    this.state = { open: false };
+    this.state = { isLoading: false };
     this.selectors = {
       lightbox: ".lightbox",
       modal: ".lightbox .modal"
@@ -26,8 +49,8 @@ class Modal extends React.Component {
     //set animation
     this.node_lightbox = document.querySelector(this.selectors['lightbox']);
     // this.node_lightbox.hidden = true; //this keeps element's hitbox
-    //this.node_lightbox.style.display = "none"; //have to remember previous style
-    //this.node_lightbox.style.visibility  = "hidden";
+    // this.node_lightbox.style.display = "none"; //have to remember previous style
+    // this.node_lightbox.style.visibility  = "hidden";
     this.node_modal = document.querySelector(this.selectors['modal']);
 
     //aniamtion
@@ -53,9 +76,13 @@ class Modal extends React.Component {
     });
 
 
+
   }
     
+  startmodal(){
+    // loading screen
 
+  }
 
   openModal(){
     this.node_lightbox.style.pointerEvents = "auto";
@@ -85,6 +112,8 @@ class Modal extends React.Component {
 
   // The Render function
   render(){
+    // TODO: currently style 'isLoading' is hardcoded in. 
+    //       It makes the container a flex box to fit a loader
     return (
       <div className="lightbox" onClick={(e) => this.closeModal(e)}>
         <div className="modal" onClick={e => {e.stopPropagation();}}>
@@ -92,7 +121,10 @@ class Modal extends React.Component {
             <span className="projectName"></span>
             <span className="close" onClick={e => this.closeModal(e)}>Close</span>
           </div>
-          <div className="content">{this.props.content}</div>
+          <div className="content isLoading">
+            <Spinny style="light"/>
+            {this.props.content}
+          </div>
 
           <div className="footer"></div>
         </div> 
@@ -115,7 +147,6 @@ class ViewProjectButton extends React.Component {
   openProject(e){
     e.preventDefault();
 
-    // TODO: open modal 
     r_modal.openModal();
 
     // Make API call 
@@ -191,9 +222,12 @@ class ViewProjectButton extends React.Component {
     // +++++++++++++++++++++
     // CHAIN
 
-    getProject(this._id)
-    .then((data) => showProject(data))
-    .done(makeReqTest);
+    //getProject(this._id)
+    //.then((data) => showProject(data))
+    //.done(makeReqTest);
+
+    // test only modal animation
+
 
     // +++++++++++++++++++++
     // +++++++++++++++++++++
